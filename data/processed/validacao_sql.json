@@ -1,0 +1,38 @@
+{
+  "rows": 1585,
+  "active_total_R$mil": 17514570107,
+  "credit_R$mil": 6467481843,
+  "equity_R$mil": 1887410071,
+  "net_profit_R$mil": 154080056,
+  "profitable_institutions": 1272,
+  "loss_making_institutions": 302,
+  "distinct_codes": 1585,
+  "date_bases": 1,
+  "TCB_categories": 8,
+  "TC_codes": 3,
+  "TI_codes": 24,
+  "segment_breakdown": [
+    [
+      "Bancário",
+      174,
+      14932606987,
+      5591866978,
+      119466795
+    ],
+    [
+      "Cooperativas",
+      782,
+      1008064262,
+      458055663,
+      9836503
+    ],
+    [
+      "Não bancário",
+      629,
+      1573898858,
+      417559202,
+      24776758
+    ]
+  ],
+  "reconciliation": "Python/CSV and SQLite headline totals match exactly"
+}
