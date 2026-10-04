@@ -1,0 +1,39 @@
+// Medidas para uma tabela importada chamada FactIFData.
+
+Instituicoes analisadas = COUNTROWS(FactIFData)
+
+Ativo total (R$ mil) = SUM(FactIFData[AtivoTotal_R_mil])
+Ativo total (R$ bi) = DIVIDE([Ativo total (R$ mil)], 1000000)
+
+Carteira classificada (R$ mil) = SUM(FactIFData[CarteiraCreditoClassificada_R_mil])
+Carteira classificada (R$ bi) = DIVIDE([Carteira classificada (R$ mil)], 1000000)
+
+Patrimonio liquido (R$ mil) = SUM(FactIFData[PatrimonioLiquido_R_mil])
+Patrimonio liquido (R$ bi) = DIVIDE([Patrimonio liquido (R$ mil)], 1000000)
+
+Lucro liquido (R$ mil) = SUM(FactIFData[LucroLiquido_R_mil])
+Lucro liquido (R$ bi) = DIVIDE([Lucro liquido (R$ mil)], 1000000)
+
+Carteira / ativo (%) = DIVIDE([Carteira classificada (R$ mil)], [Ativo total (R$ mil)])
+
+Lucro / PL final - proxy (%) = DIVIDE([Lucro liquido (R$ mil)], [Patrimonio liquido (R$ mil)])
+
+Instituicoes com lucro = COUNTROWS(FILTER(FactIFData, FactIFData[LucroLiquido_R_mil] > 0))
+
+Instituicoes com prejuizo = COUNTROWS(FILTER(FactIFData, FactIFData[LucroLiquido_R_mil] < 0))
+
+Instituicoes sem lucro informado ou com resultado zero = COUNTROWS(FILTER(FactIFData, ISBLANK(FactIFData[LucroLiquido_R_mil]) || FactIFData[LucroLiquido_R_mil] = 0))
+
+Ranking por ativo = RANKX(ALLSELECTED(FactIFData[Instituicao]), [Ativo total (R$ mil)], , DESC, DENSE)
+
+Ranking por lucro = RANKX(ALLSELECTED(FactIFData[Instituicao]), [Lucro liquido (R$ mil)], , DESC, DENSE)
+
+Top 10 por ativo = IF([Ranking por ativo] <= 10, 1, 0)
+
+Top 10 por lucro = IF([Ranking por lucro] <= 10, 1, 0)
+
+// Formato sugerido em Ferramentas de medida no Power BI:
+// - Contagens e medidas em R$ mil: número inteiro, 0 casas decimais.
+// - Medidas em R$ bi: número decimal, 2 casas; o nome da medida identifica a unidade.
+// - Carteira / ativo e Lucro / PL final - proxy: percentual, 2 casas decimais.
+// A proxy Lucro / PL final não é ROE regulatório.
