@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Duplicate exports and an older, unrelated Power BI file
+outputs/Como_corrigi_dados_IFData.md
+outputs/Consulta_IFData.m
+outputs/dados_IFData_2024_limpo.csv
+outputs/gg.pbix
+outputs/ifdata_2024_validacao.sql
+outputs/Medidas_IFData.dax
+outputs/Projeto_Portfolio_BCB_IFData.md
+outputs/Relatorio_PowerBI_IFData_2024.md
+outputs/validacao_sql_IFData_2024.json
+outputs/rojeto_IFData_2024.pbix
